@@ -85,17 +85,13 @@ export default class Form extends React.Component {
           console.log(user);
 
           if(this.state.final_name !== ""&& this.state.final_email !== "" && this.state.final_title !== "" && this.state.final_techStack !== "" && this.state.final_message !== ""){     
-          fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...state,
-      }),
-    })
-      .then(() => navigate(form.getAttribute('action')))
-      .catch((error) => alert(error))
-  }
+            axios.post(`http://localhost:5000/getData`, {user })
+            .then(res => {
+            console.log(res);
+            })
+            .catch((error)=>{
+              console.log("Data not insert");
+            })
           }
           else
           {
@@ -146,17 +142,16 @@ export default class Form extends React.Component {
   render() {
    
     return (
-      <form  name="contact" method="POST" data-netlify="true" name="contact" data-netlify-honeypot="bot-field">
+      <form method="POST" data-netlify="true">
         <div className="form-group">
             <label>Name</label>
             <input
             type="text"
             name="userName"
-            onBlur={this. validateName
+            onBlur={this. validateName}
 
             className={`form-control ${this.state. userNameError ? 'is-invalid':''}`}
             />
-   <input type="hidden" name="form-name" value="contact" />
             <span>{this.state.userNameError}</span>
         </div>
         <div className="form-group">
