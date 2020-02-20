@@ -142,7 +142,7 @@ export default class Form extends React.Component {
   render() {
    
     return (
-      <form>
+      <form  method="POST" data-netlify="true">
         <div className="form-group">
             <label>Name</label>
             <input
