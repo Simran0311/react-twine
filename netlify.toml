@@ -4,3 +4,8 @@
 [Build]
   Publish = ""
   Functions = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/index"
+  status = 200
