@@ -87,7 +87,7 @@ export default class Form extends React.Component {
 
           if(this.state.final_name !== ""&& this.state.final_email !== "" && this.state.final_title !== "" && this.state.final_techStack !== "" && this.state.final_message !== ""){     
                 console.log("submit");
-              $("form").submit();
+  
           }
           else
           {
