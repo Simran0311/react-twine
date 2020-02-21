@@ -96,7 +96,7 @@ export default class Form extends React.Component {
             const userName= event.target.value;
             this.setState({   
            userNameError:
-           userName.length > 3 && userName.length < 10 ? null : 'Name must be min 3 characters and max 10 character',
+           userName.length > 3 && userName.length < 10 ? null : 'Name must be longer than 3 characters and smaller than 15 characters',
            final_name : userName
           });
          }
@@ -121,7 +121,7 @@ export default class Form extends React.Component {
          const techstack = event.target.value;
          this.setState({
          techStackError:
-         techstack.length > 3 && techstack.length <15 ? null : 'TechStack must be min 3 characters and max 15 character',
+         techstack.length > 3 && techstack.length <15 ? null : 'TechStack must be longer than 3 characters and smaller than 15 characters',
          final_techStack: techstack
        });
       }
@@ -129,7 +129,7 @@ export default class Form extends React.Component {
          const message = event.target.value;
          this.setState({
          messageError:
-         message.length > 3 && message.length < 100? null : 'Message must be min 3 characters and max 100 character',
+         message.length > 3 && message.length < 100? null : 'Message must be longer than 3 characters and smaller than 100 characters',
          final_message : message
        });
       }
