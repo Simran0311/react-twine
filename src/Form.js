@@ -74,7 +74,7 @@ export default class Form extends React.Component {
     }
 
     handleSubmit = event => {
- 
+      event.preventDefault();
       const user = {
             userName: this.state.final_name,
             email: this.state.final_email,
@@ -86,7 +86,8 @@ export default class Form extends React.Component {
           console.log(user);
 
           if(this.state.final_name !== ""&& this.state.final_email !== "" && this.state.final_title !== "" && this.state.final_techStack !== "" && this.state.final_message !== ""){     
-          console.log("submit")
+          console.log("submit");
+              this.submit();
           }
           else
           {
