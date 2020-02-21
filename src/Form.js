@@ -136,7 +136,8 @@ export default class Form extends React.Component {
   render() {
    
     return (
-      <form name="contact" method="POST" data-netlify="true" netlify>
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" netlify>
+        <input type="hidden" name="form-name" value="contact" />
         <div className="form-group">
             <label>Name</label>
             <input
