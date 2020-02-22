@@ -13,6 +13,8 @@
     <!-- A little help for the Netlify post-processing bots -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
+       <input type="text" name="title" />
+       <input type="text" name="techStack" />
       <input type="email" name="email" />
       <textarea name="message"></textarea>
     </form>
@@ -25,6 +27,16 @@
           <p>
             <label>
               Your Name: <input type="text" name="name" />
+            </label>
+          </p>
+          <p>
+            <label>
+              Title: <input type="text" name="title" />
+            </label>
+          </p>
+          <p>
+            <label>
+              TechStack: <input type="text" name="techStack" />
             </label>
           </p>
           <p>
