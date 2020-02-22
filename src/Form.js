@@ -15,11 +15,6 @@ export default class Form extends React.Component {
           title: "",
           techStack: "",
           message: "",
-          userNameError:null,
-          emailError:null,
-          titleError: null,
-          techStackError: null,
-          messageError: null,
           final_name:"",
           final_email:"",
           final_title:"",
@@ -30,51 +25,10 @@ export default class Form extends React.Component {
        }
      }
 
-    validateName = (e) => {
-      const userName= e.target.value;
-      this.setState({
-        userNameError:
-        userName.length > 3 && userName.length < 15 ? null : 'Name must be longer than 3 characters and smaller than 15 characters',
-        final_name : userName
-      });
-    }
-    
-    validateEmail = (e) => {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-       const email = e.target.value;
-      this.setState({
-        emailError:
-       re.test(String(email)) ? null : 'Email must be valid',
-       final_email : email
-      });
-    }
-    validateTitle = (e) => {
-      const title = e.target.value;
-      this.setState({
-        titleError:
-          title.length > 3 && title.length < 15 ? null : 'Title must be longer than 3 characters and smaller than 15 characters',
-          final_title : title
-        });
-    }
-    validateTechStack= (e) => {
-      const techstack = e.target.value;
-      this.setState({
-        techStackError:
-        techstack.length > 3 && techstack.length <15 ? null : 'TechStack must be longer than 3 characters and smaller than 15 characters',
-        final_techStack: techstack
-      });
-    }
-    validateMessage= (e) => {
-      const message = e.target.value;
-      this.setState({
-        messageError:
-        message.length > 3 && message.length < 100? null : 'Message  must be longer than 3 characters and smaller than 100 characters',
-        final_message : message
-      });
-    }
-
+ 
+ 
     handleSubmit = event => {
- event.preventDefault();
+ 
       const user = {
             userName: this.state.final_name,
             email: this.state.final_email,
@@ -87,52 +41,9 @@ export default class Form extends React.Component {
 
           if(this.state.final_name !== ""&& this.state.final_email !== "" && this.state.final_title !== "" && this.state.final_techStack !== "" && this.state.final_message !== ""){     
                 console.log("submit");
-              document.getElementById("myForm").submit();
+ 
   
           }
-          else
-          {
-         if(this.state.final_name == ""){
-            const userName= event.target.value;
-            this.setState({   
-           userNameError:
-           userName.length > 3 && userName.length < 10 ? null : 'Name must be longer than 3 characters and smaller than 15 characters',
-           final_name : userName
-          });
-         }
-        if(this.state.final_email == ""){
-           var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-           const email = event.target.value;
-           this.setState({
-           emailError:
-           re.test(String(email)) ? null : 'Email must be valid',
-           final_email : email
-          });
-         }
-        if(this.state.final_title == ""){
-           const title = event.target.value;
-           this.setState({
-           titleError:
-           title.length > 3 && title.length < 15 ? null : 'Title must be longer than 3 characters and smaller than 15 characters',
-           final_title : title
-         });
-         }
-      if(this.state.final_techStack == ""){
-         const techstack = event.target.value;
-         this.setState({
-         techStackError:
-         techstack.length > 3 && techstack.length <15 ? null : 'TechStack must be longer than 3 characters and smaller than 15 characters',
-         final_techStack: techstack
-       });
-      }
-      if(this.state.final_techStack == ""){
-         const message = event.target.value;
-         this.setState({
-         messageError:
-         message.length > 3 && message.length < 100? null : 'Message must be longer than 3 characters and smaller than 100 characters',
-         final_message : message
-       });
-      }
     }
     }
     
@@ -146,9 +57,7 @@ export default class Form extends React.Component {
             <input
             type="text"
             name="userName"
-            onBlur={this. validateName}
-
-            className={`form-control ${this.state. userNameError ? 'is-invalid':''}`}
+            className="form-control"
             />
             <span>{this.state.userNameError}</span>
         </div>
@@ -157,8 +66,7 @@ export default class Form extends React.Component {
             <input
             type="email"
             name="email"
-            onBlur={this.validateEmail}
-            className={`form-control ${this.state. emailError ? 'is-invalid':''}`}
+            className="form-control"
             />
             <span>{this.state.emailError}</span>
         </div>
@@ -167,8 +75,7 @@ export default class Form extends React.Component {
             <input
              type="text"
             name="title"
-            onBlur={this.validateTitle}
-            className={`form-control ${this.state. titleError ? 'is-invalid':''}`}
+         className="form-control"
             />
             <span>{this.state.titleError}</span>
         </div>
@@ -177,16 +84,14 @@ export default class Form extends React.Component {
             <input
              type="text"
             name="techStack"
-            onBlur={this.validateTechStack}
-            className={`form-control ${this.state. techStackError? 'is-invalid':''}`}
+           className="form-control"
             />
             <span>{this.state.techStackError}</span>
         </div>
         <div className="form-group">
             <label>message</label>
             <textarea name="message"
-            onBlur={this.validateMessage}
-            className={`form-control ${this.state. messageError ? 'is-invalid':''}`}
+           className="form-control"
             >
             </textarea>
             <span>{this.state. messageError}</span>
