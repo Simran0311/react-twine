@@ -40,7 +40,6 @@ export default class Form extends React.Component {
  
 
     handleSubmit = event => {
-      event.preventDefault();
       const user = {
             name: this.state.final_name,
             email: this.state.final_email,
