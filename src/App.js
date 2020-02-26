@@ -16,11 +16,7 @@ class App extends Component {
     fields: {}
   };
 
-componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      window.scrollTo(0, 0)
-    }
-  }
+
   onChange = updatedValue => {
     this.setState({
       fields: {
@@ -36,15 +32,12 @@ componentDidUpdate(prevProps) {
       <div className="App">
 
         <Router>
-       <ScrollToTop>
-          <Header/>
-      
+            <Header/>  
           <Route exact path="/" component={Home}/>
           <Route path="/careers" component={Careers}/>
           <Route path="/our-story" component={OurStory}/>
           <Route path="/Request-demo" component={RequestDemo}/>
           <Footer/>
-       </ScrollToTop>
         </Router>
       </div>
     );
