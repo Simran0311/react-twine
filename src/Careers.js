@@ -9,10 +9,10 @@ export default class OurStory extends React.Component {
       super(props);
    }
    componentDidMount() {
-      
+      window.scrollTo(0, 0)
        this.loadGreenhouseJobs(() => {
          window.Grnhse.Iframe.load();
-          window.scrollTo(0, 0)
+          
       });  
    }
 
