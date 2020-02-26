@@ -16,10 +16,6 @@ class App extends Component {
     fields: {}
   };
 
-  componentDidMount() {
-      window.scrollTo(0, 0)
-      });  
-   }
 
   onChange = updatedValue => {
     this.setState({
@@ -34,7 +30,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Router>
+        <Router  onUpdate={() => window.scrollTo(0, 0)}>
           <Header/>
           <Route exact path="/" component={Home}/>
           <Route path="/careers" component={Careers}/>
