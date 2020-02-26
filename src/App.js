@@ -16,7 +16,6 @@ class App extends Component {
     fields: {}
   };
 
-
   onChange = updatedValue => {
     this.setState({
       fields: {
@@ -27,12 +26,11 @@ class App extends Component {
   };
 
   render() {
-    return this.props.children
     return (
       <div className="App">
 
         <Router>
-            <Header/>  
+          <Header/>
           <Route exact path="/" component={Home}/>
           <Route path="/careers" component={Careers}/>
           <Route path="/our-story" component={OurStory}/>
@@ -44,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;
