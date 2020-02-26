@@ -24,7 +24,7 @@ export default class Form extends React.Component {
       const userName= event.target.value;
       this.setState({
         userNameError:
-        userName.length > 3 && userName.length < 10 ? null : 'Name must be min 3 characters and max 10 character',
+        userName.length > 0 ? null : 'Name must be fill',
         final_name : userName
       });
     }
