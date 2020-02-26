@@ -24,7 +24,7 @@ export default class Form extends React.Component {
       const userName= event.target.value;
       this.setState({
         userNameError:
-        userName.length > 0 ? null : 'Name must be fill',
+        userName.length > 1 ? null : 'Name must be fill',
         final_name : userName
       });
     }
