@@ -33,7 +33,7 @@ componentDidMount() {
     return (
       <div className="App">
 
-        <Router  onUpdate={() => window.scrollTo(0, 0)}>
+        <Router>
           <Header/>
           <Route exact path="/" component={Home}/>
           <Route path="/careers" component={Careers}/>
