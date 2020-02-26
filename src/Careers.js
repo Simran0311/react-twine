@@ -12,6 +12,7 @@ export default class OurStory extends React.Component {
       
        this.loadGreenhouseJobs(() => {
          window.Grnhse.Iframe.load();
+          window.scrollTo(0, 0)
       });  
    }
 
