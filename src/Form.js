@@ -70,8 +70,8 @@ export default class Form extends React.Component {
      final_email : email
     });
    }
-        }
       }
+}
     
   render() {
    
