@@ -43,7 +43,7 @@ componentDidUpdate(prevProps) {
           <Route path="/careers" component={Careers}/>
           <Route path="/our-story" component={OurStory}/>
           <Route path="/Request-demo" component={RequestDemo}/>
-          </Footer>
+          <Footer/>
        </ScrollToTop>
         </Router>
       </div>
