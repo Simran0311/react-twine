@@ -4,33 +4,45 @@ import { resetWarningCache } from "prop-types";
 
 export default class Form extends React.Component {
 
-    
-    
   constructor(props)
   {
       super(props);
       this.state = {
-          userName:" ",
+          name:" ",
           email:" ",
           title: "",
           techStack: "",
           message: "",
+          userNameError:null,
+          emailError:null,
           final_name:"",
           final_email:"",
-          final_title:"",
-         final_techStack:"",
-         final_message:"",
-         initialState:""
-         
        }
      }
+     validateName = (e) => {
+      const userName= e.target.value;
+      this.setState({
+        userNameError:
+        userName.length > 3 && userName.length < 10 ? null : 'Name must be min 3 characters and max 10 character',
+        final_name : userName
+      });
+    }
+    
+    validateEmail = (e) => {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+       const email = e.target.value;
+      this.setState({
+        emailError:
+       re.test(String(email)) ? null : 'Email must be valid',
+       final_email : email
+      });
+    }
+ 
 
- 
- 
     handleSubmit = event => {
- 
+      event.preventDefault();
       const user = {
-            userName: this.state.final_name,
+            name: this.state.final_name,
             email: this.state.final_email,
             title: this.state.final_title,
             techStack: this.state.final_techStack,
@@ -38,11 +50,30 @@ export default class Form extends React.Component {
          
           };
           console.log(user);
-
           if(this.state.final_name !== ""&& this.state.final_email !== "" && this.state.final_title !== "" && this.state.final_techStack !== "" && this.state.final_message !== ""){     
                 console.log("submit");
-    }
-    }
+           }
+        else
+        {
+         if(this.state.final_name == ""){
+          const userName= event.target.value;
+         this.setState({   
+         userNameError:
+         userName.length > 1 ? null : 'Name must be fill',
+        final_name : userName
+       });
+     }
+  if(this.state.final_email == ""){
+     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+     const email = event.target.value;
+     this.setState({
+     emailError:
+     re.test(String(email)) ? null : 'Email must be valid',
+     final_email : email
+    });
+   }
+        }
+      }
     
   render() {
    
@@ -54,7 +85,8 @@ export default class Form extends React.Component {
             <input
             type="text"
             name="userName"
-            className="form-control"
+            onBlur={this. validateName}
+            className={`form-control ${this.state. userNameError ? 'is-invalid':''}`}
             />
             <span>{this.state.userNameError}</span>
         </div>
@@ -63,7 +95,8 @@ export default class Form extends React.Component {
             <input
             type="email"
             name="email"
-            className="form-control"
+            onBlur={this.validateEmail}
+            className={`form-control ${this.state. emailError ? 'is-invalid':''}`}
             />
             <span>{this.state.emailError}</span>
         </div>
@@ -72,27 +105,24 @@ export default class Form extends React.Component {
             <input
              type="text"
             name="title"
-         className="form-control"
+            className="form-control"
             />
-            <span>{this.state.titleError}</span>
         </div>
         <div className="form-group">
             <label>HR Tech Stack</label>
             <input
              type="text"
             name="techStack"
-           className="form-control"
+            className="form-control"
             />
-            <span>{this.state.techStackError}</span>
         </div>
         <div className="form-group">
-            <label>message</label>
+            <label>Message</label>
             <textarea name="message"
-           className="form-control"
+
+            className="form-control"
             >
             </textarea>
-            <span>{this.state. messageError}</span>
-            
         </div>
         <button className="btn theme-btn-blue theme-btn" type="submit" onClick={e => this.handleSubmit(e)}  >Submit</button>
       </form>
