@@ -16,10 +16,11 @@ class App extends Component {
     fields: {}
   };
 
-componentDidMount() {
-    window.scrollTo(0, 0);
-}
-
+componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0)
+    }
+  }
   onChange = updatedValue => {
     this.setState({
       fields: {
@@ -30,20 +31,24 @@ componentDidMount() {
   };
 
   render() {
+    return this.props.children
     return (
       <div className="App">
 
         <Router>
+       <ScrollToTop>
           <Header/>
+      
           <Route exact path="/" component={Home}/>
           <Route path="/careers" component={Careers}/>
           <Route path="/our-story" component={OurStory}/>
           <Route path="/Request-demo" component={RequestDemo}/>
-          <Footer/>
+          </Footer>
+       </ScrollToTop>
         </Router>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
