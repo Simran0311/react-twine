@@ -20,7 +20,7 @@ export default class Form extends React.Component {
        }
      }
      validateName = event => {
-         event.preventDefault();
+        
       const userName= event.target.value;
       this.setState({
         userNameError:
@@ -30,7 +30,7 @@ export default class Form extends React.Component {
     }
     
     validateEmail = event => {
-       event.preventDefault();
+       
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
        const email = event.target.value;
       this.setState({
@@ -42,6 +42,7 @@ export default class Form extends React.Component {
  
 
     handleSubmit = event => {
+       event.preventDefault();
       const user = {
             name: this.state.final_name,
             email: this.state.final_email,
