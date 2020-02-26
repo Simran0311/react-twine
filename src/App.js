@@ -16,6 +16,9 @@ class App extends Component {
     fields: {}
   };
 
+componentDidMount() {
+    window.scrollTo(0, 0);
+}
 
   onChange = updatedValue => {
     this.setState({
