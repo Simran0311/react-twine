@@ -54,6 +54,7 @@ export default class Form extends React.Component {
           console.log(user);
       
          if(this.state.final_name == ""){
+            event.preventDefault();
           const userName= event.target.value;
          this.setState({   
          userNameError:
@@ -62,6 +63,7 @@ export default class Form extends React.Component {
        });
      }
   if(this.state.final_email == ""){
+     event.preventDefault();
      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      const email = event.target.value;
      this.setState({
