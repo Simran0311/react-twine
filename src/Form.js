@@ -19,8 +19,9 @@ export default class Form extends React.Component {
           final_email:"",
        }
      }
-     validateName = (e) => {
-      const userName= e.target.value;
+     validateName = event => {
+         event.preventDefault();
+      const userName= event.target.value;
       this.setState({
         userNameError:
         userName.length > 3 && userName.length < 10 ? null : 'Name must be min 3 characters and max 10 character',
@@ -28,9 +29,10 @@ export default class Form extends React.Component {
       });
     }
     
-    validateEmail = (e) => {
+    validateEmail = event => {
+       event.preventDefault();
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-       const email = e.target.value;
+       const email = event.target.value;
       this.setState({
         emailError:
        re.test(String(email)) ? null : 'Email must be valid',
