@@ -3,9 +3,6 @@ import './App.css';
 import {Link} from 'react-router-dom'
 import activeComponent from 'react-router-active-component';
 
-componentDidMount() {
-    window.scrollTo(0, 0);
-} 
 function Header() {
   return (    
     <div>
